@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>AutomaticHappiness</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +11,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to "AutomaticHappiness", root_path, class: 'navbar-brand' %>
+        </div>
+      </div>
+    </header>
+    <div class="">
+      <%= yield %>
+    </div>
   </body>
 </html>

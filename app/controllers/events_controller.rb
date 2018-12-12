@@ -1,5 +1,10 @@
 class EventsController < ApplicationController
-  before_action :authenticate
+  # イベント一覧はみんながみれるようにするのでログイン状態をチェックしない
+  before_action :authenticate, expect: :show
+
+  def show
+    @event = Event.find(params[:id])
+  end
 
   def new
     @event = current_user.created_events.build
@@ -21,5 +26,5 @@ class EventsController < ApplicationController
       :name, :place, :content, :start_time, :end_time
     )
   end
-  
+
 end

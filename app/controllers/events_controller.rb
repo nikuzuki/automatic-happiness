@@ -19,6 +19,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = current_user.created_events.find(params[:id])
+  end
+
+  def update
+    @event = current_user.created_events.find(params[:id])
+    if @event.update(event_params)  # 各属性が変わったか見て変わってたら変更後のeventを返す
+      redirect_to @event, notice: '更新しました'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def event_params
